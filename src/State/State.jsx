@@ -20,7 +20,6 @@ import v7 from "../Asset/img/v7.png";
 import v8 from "../Asset/img/v8.png";
 import v9 from "../Asset/img/v9.png";
 
-
 export default class State extends Component {
   imageList = [
     { src: g1, id: 1 },
@@ -99,27 +98,27 @@ export default class State extends Component {
     },
   ];
 
-  state={
-      id: 1,
-      price: 30,
-      name: "GUCCI G8850U",
-      url: v1,
-      desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
-  }
+  state = {
+    id: 1,
+    price: 30,
+    name: "GUCCI G8850U",
+    url: v1,
+    desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+  };
   renderGlass = (event) => {
-    console.log(event.target.id)
-    for (let i=0; i<this.glassList.length;i++){
-      if (event.target.id==this.glassList[i].id){
+    console.log(event.target.id);
+    for (let i = 0; i < this.glassList.length; i++) {
+      if (event.target.id == this.glassList[i].id) {
         this.setState({
           id: this.glassList[i].id,
           price: this.glassList[i].price,
           name: this.glassList[i].name,
           url: this.glassList[i].url,
           desc: this.glassList[i].desc,
-        })
+        });
       }
     }
-    console.log(this.state)
+    console.log(this.state);
   };
   render() {
     return (
@@ -129,35 +128,47 @@ export default class State extends Component {
           className="container d-flex justify-content-between "
           style={{ marginTop: 100, position: "absolute", top: 0, left: 100 }}
         >
-          <div className="bg-white"  style={{ width: 300 }}>
-          <img
-            src={model}
-            style={{ width: 300, height: 300 }}
-            id="model"
-            alt="..."
-          ></img>
-           <img src={this.state.url}  style={{position: "absolute", top: 70, left: 90,width: 150, height: 50}} alt="" />
-          <div className="card-body">
-            <h3>{this.state.name}</h3>
-            <span>{this.state.price}</span>
-            <p >{this.state.desc}</p>
-          </div>
-
-          </div>
           <img src={model} style={{ width: 300, height: 300 }} alt="..." />
+          <div className="bg-white" style={{ width: 300 }}>
+            <img
+              src={model}
+              style={{ width: 300, height: 300 }}
+              id="model"
+              alt="..."
+            ></img>
+            <img
+              src={this.state.url}
+              style={{
+                position: "absolute",
+                top: 70,
+                right: 85,
+                width: 150,
+                height: 50,
+              }}
+              alt=""
+            />
+            <div className="card-body">
+              <h3>{this.state.name}</h3>
+              <span>{this.state.price}</span>
+              <p>{this.state.desc}</p>
+            </div>
+          </div>
         </div>
         <div
-          className="glassItem container bg-light" id="glassItem"
+          className="glassItem container bg-light"
+          id="glassItem"
           style={{ marginTop: 30, position: "absolute", top: 550, left: 100 }}
-        >     
+        >
           {this.imageList.map((index) => (
             <button className="btn" onClick={this.renderGlass}>
-              <img src={index.src}  id={index.id} style={{ width: 150, height: 100 }}></img>
+              <img
+                src={index.src}
+                id={index.id}
+                style={{ width: 150, height: 100 }}
+              ></img>
             </button>
           ))}
-
         </div>
-        
       </div>
     );
   }
